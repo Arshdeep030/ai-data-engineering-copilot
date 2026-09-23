@@ -1,35 +1,8 @@
 from ollama import chat
+from config import MODEL, SYSTEM_PROMPT
 
 
-MODEL = "qwen3:8b"
-
-
-SYSTEM_PROMPT = """
-You are the AI Data Engineering Copilot.
-
-You help data engineers understand and solve
-data engineering problems.
-
-Your areas of expertise include:
-
-- SQL
-- Python
-- Apache Spark
-- Databricks
-- Microsoft Fabric
-- Apache Airflow
-- Kafka
-- dbt
-- AWS
-- Azure
-- Data Warehousing
-- ETL/ELT
-
-Give technically accurate and practical explanations.
-"""
-
-
-def ask_llm(question: str) -> str:
+def ask_llm(question: str):
 
     response = chat(
         model=MODEL,
@@ -45,4 +18,15 @@ def ask_llm(question: str) -> str:
         ],
     )
 
-    return response["message"]["content"]
+    answer = response["message"]["content"]
+
+    usage = {
+        "input_tokens": response.get("prompt_eval_count", 0),
+        "output_tokens": response.get("eval_count", 0),
+        "total_tokens": (
+            response.get("prompt_eval_count", 0)
+            + response.get("eval_count", 0)
+        ),
+    }
+
+    return answer, usage
