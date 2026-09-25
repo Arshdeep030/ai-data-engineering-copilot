@@ -12,9 +12,9 @@
 
 ## 📌 Executive Summary
 
-The **AI Data Engineering Copilot** is a production-grade AI system designed for data engineering teams. While traditional RAG applications are limited to passive document lookup, this Copilot bridges **technical documentation knowledge** with **active operational access to databases and pipelines** through the **Model Context Protocol (MCP)** and an **autonomous multi-step reasoning agent**.
+The **AI Data Engineering Copilot** is an enterprise-grade AI system designed for modern data engineering teams. While traditional RAG applications are limited to passive document lookup, this Copilot bridges **technical documentation knowledge** with **active operational access to production databases and pipelines** through the **Model Context Protocol (MCP)** and an **autonomous multi-step reasoning agent**.
 
-It runs locally on **Qwen3 8B** (or cloud via **Groq LPU**) and features a complete Day 1–15 software architecture with enterprise security boundaries, reciprocal rank fusion, cross-encoder reranking, semantic hallucination checks, query caching, and real-time observability.
+It runs locally on **Qwen3 8B** (or cloud via **Groq LPU**) and features a complete production software architecture with enterprise security boundaries, reciprocal rank fusion, cross-encoder reranking, semantic hallucination checks, query caching, and real-time observability.
 
 ---
 
@@ -79,12 +79,12 @@ It runs locally on **Qwen3 8B** (or cloud via **Groq LPU**) and features a compl
 
 ## 🚀 Key Technical Innovations
 
-### 1. Autonomous Multi-Step Database Agent (Day 15 Capstone)
+### 1. Autonomous Multi-Step Database Agent
 * **Sequential Loop Controller:** Deconstructs complex user requests (e.g., *"Analyze the employees table, show me how many records exist and sample records"*) into distinct observation-action-thought steps.
 * **Infinite Loop Safeguards:** Has a hard execution boundary (`MAX_AGENT_STEPS = 5`) and runtime signature hashing that detects and aborts duplicate tool invocations immediately.
 * **Provenance Timeline:** Captures and displays every step's action, tool signature, and latency for full explainability.
 
-### 2. Model Context Protocol (MCP) Client & Server (Day 13–14)
+### 2. Model Context Protocol (MCP) Client & Server
 * **Standardized JSON-RPC 2.0:** Completely separates the AI reasoning engine from tool execution via standard MCP protocol envelopes (`tools/list`, `tools/call`).
 * **Tool Registry:** Houses safe operational database tools:
   * `get_table_schema`: Inspects column definitions, types, and primary keys.
@@ -92,15 +92,30 @@ It runs locally on **Qwen3 8B** (or cloud via **Groq LPU**) and features a compl
   * `get_table_sample`: Retrieves bounded record samples (`limit <= 50`).
 * **Enterprise Security & SQL Injection Shield:** Strict table allowlist (`employees`, `orders`, `customers`) and regex identifier validation (`^[a-zA-Z0-9_]+$`) blocking comment dashes, semicolons, and UNION attacks.
 
-### 3. State-of-the-Art Hybrid RAG Pipeline (Day 1–8)
+### 3. State-of-the-Art Hybrid RAG Pipeline
 * **Dense + Sparse Fusion:** Combines **BAAI/bge-base-en-v1.5** embeddings in ChromaDB with **BM25** lexical scoring via **Reciprocal Rank Fusion (RRF)**.
 * **Cross-Encoder Reranking:** Applies **BAAI/bge-reranker-base** to score the top candidates for optimal passage precision.
 * **Semantic Faithfulness & Grounding:** Natural Language Inference (NLI) with **DeBERTa-v3** verifies claims against source chunks, eliminating hallucinations.
 
-### 4. Production Observability & Caching (Day 9–10)
+### 4. Production Observability & High-Performance Caching
 * **Semantic & Exact Query Cache:** Normalized question caching reduces repeat query latency from ~25s down to **< 10ms** (recorded in metrics).
 * **Distributed Request Tracking:** Generates unique hexadecimal `request_id` hashes propagated across all logs.
 * **Telemetry & Metrics Endpoint:** Exposes live Prometheus-compatible metrics (`/metrics`) covering cache hit rates, average tool latency, agent step counts, and error rates.
+
+---
+
+## 📊 Architecture Components & Technical Specifications
+
+| Subsystem | Technology Stack | Capabilities & Guarantees |
+| :--- | :--- | :--- |
+| **Agent Controller** | Python 3.11+, Qwen3 8B, Pydantic | Multi-step sequential reasoning, loop detection aborts, `MAX_STEPS = 5` boundary |
+| **Protocol Layer** | Model Context Protocol (MCP) | JSON-RPC 2.0 client/server decoupling, dynamic tool discovery (`tools/list`, `tools/call`) |
+| **Operational Tools** | SQLite, Parameterized SQL | Column schema discovery, exact row counts, bounded sampling with identifier allowlists |
+| **Hybrid Retrieval** | BGE-base + BM25 + ChromaDB | Dense vector search fused with lexical BM25 using Reciprocal Rank Fusion (RRF) |
+| **Reranking Engine** | BAAI/bge-reranker-base | Cross-Encoder scoring of top-k passages for high-precision context selection |
+| **Hallucination Shield** | DeBERTa-v3 NLI | Natural language inference verifying citation claims against source documents |
+| **Semantic Caching** | SQLite & In-Memory LRU | Normalized query hashing delivering sub-10ms response times on repeat queries |
+| **API & Dashboard** | FastAPI, Uvicorn, Vanilla CSS | REST API, Prometheus-compatible `/metrics`, and custom dark-mode glassmorphic UI |
 
 ---
 
@@ -112,24 +127,6 @@ The Copilot serves a custom, responsive, dark-mode glassmorphic dashboard direct
 * **Interactive Step Timeline:** Expandable accordion showing exact agent reasoning chains, tool parameters, and raw JSON observations.
 * **Sources Grid:** Clickable citation provenance linking back to indexed documentation chunks.
 * **Telemetry Modal:** Live dashboard displaying runtime latency, MCP tool health, and cache hit ratios.
-
----
-
-## 🗓️ 15-Day Engineering Progression
-
-| Milestone | Architecture Focus | Core Artifacts |
-| :--- | :--- | :--- |
-| **Day 1–3** | Ingestion & Vector Foundations | Markdown chunking, BAAI/bge-base embeddings, ChromaDB vector store |
-| **Day 4–5** | Hybrid Retrieval & Lexical Search | BM25 sparse index, Reciprocal Rank Fusion (RRF) candidate merging |
-| **Day 6–7** | Cross-Encoder Reranking & LLM | BAAI/bge-reranker-base, prompt engineering, structured Qwen3 generation |
-| **Day 8** | Evaluation Framework & Grounding | Retrieval recall@k, MRR, DeBERTa NLI faithfulness, citation verification |
-| **Day 9** | Production REST API with FastAPI | Lifespan model warming, request validation, structured Pydantic models |
-| **Day 10** | Caching & Runtime Observability | Normalized query caching, structured audit logger, `/metrics` telemetry |
-| **Day 11** | First Data Engineering Tools | SQLite database, schema extraction, strict SQL injection prevention |
-| **Day 12** | LLM Tool Calling & Intelligent Routing | Zero-shot JSON tool-call schema, router classification (`rag`/`tool`/`refuse`) |
-| **Day 13** | Model Context Protocol (MCP) | JSON-RPC 2.0 client/server separation, dynamic tool discovery |
-| **Day 14** | Multi-Tool Engineering Suite | Schema, row count, bounded sampling, parameterized SQL safety |
-| **Day 15** | **Agentic Capstone & Web UI** | Multi-step agent controller, loop detection, interactive web dashboard |
 
 ---
 
