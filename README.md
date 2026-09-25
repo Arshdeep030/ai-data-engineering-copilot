@@ -254,8 +254,4 @@ curl -X POST http://127.0.0.1:8000/query \
 
 ---
 
-## 📄 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
-Developed with passion by **Arshdeep Singh**.
