@@ -1,0 +1,608 @@
+{
+  "dataset": "data/evaluation/rag_eval.json",
+  "pipeline": "dense + BM25 + RRF + cross-encoder reranker",
+  "evaluation_type": "deterministic_lexical_faithfulness_grounding",
+  "overlap_threshold": 0.3,
+  "summary": {
+    "answerable_case_count": 5,
+    "unsupported_case_count": 5,
+    "average_faithfulness": 1.0,
+    "average_grounding": 1.0,
+    "correct_refusals": 5,
+    "refusal_correctness": 1.0
+  },
+  "results": [
+    {
+      "id": 1,
+      "question": "What is Apache Spark?",
+      "answerable": true,
+      "answer": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel. (Source ID: spark_apache_spark_000)",
+      "evaluation": {
+        "faithfulness": {
+          "score": 1.0,
+          "supported_sentences": 3,
+          "total_sentences": 3,
+          "sentence_results": [
+            {
+              "sentence": "Apache Spark is a distributed computing engine designed for processing large datasets.",
+              "overlap_ratio": 1.0,
+              "supported": true,
+              "overlapping_terms": [
+                "a",
+                "apache",
+                "computing",
+                "datasets",
+                "designed",
+                "distributed",
+                "engine",
+                "for",
+                "is",
+                "large",
+                "processing",
+                "spark"
+              ]
+            },
+            {
+              "sentence": "A Spark application can run across multiple machines and execute tasks in parallel.",
+              "overlap_ratio": 1.0,
+              "supported": true,
+              "overlapping_terms": [
+                "a",
+                "across",
+                "and",
+                "application",
+                "can",
+                "execute",
+                "in",
+                "machines",
+                "multiple",
+                "parallel",
+                "run",
+                "spark",
+                "tasks"
+              ]
+            },
+            {
+              "sentence": "(Source ID: spark_apache_spark_000)",
+              "overlap_ratio": 0.4,
+              "supported": true,
+              "overlapping_terms": [
+                "apache",
+                "spark"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 1.0,
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 2,
+      "question": "Why can a Spark executor run out of memory?",
+      "answerable": true,
+      "answer": "A Spark executor can run out of memory due to several factors outlined in the documentation:  \n1. **Large workloads** requiring more memory than allocated.  \n2. **Cached data**占用ing significant memory, especially if the dataset is large.  \n3. **Memory-intensive operations** (e.g., shuffles, joins, aggregations) that temporarily increase memory usage during computation.  \n4. **Shuffle operations** redistributing data across executors, which can strain memory resources during data movement.  \n\nThese factors are detailed in the retrieved context [spark_executor_out_of_memory_errors_000](#spark_executor_out_of_memory_errors_000), [spark_spark_executors_000](#spark_spark_executors_000), and [spark_spark_shuffle_000](#spark_spark_shuffle_000).",
+      "evaluation": {
+        "faithfulness": {
+          "score": 1.0,
+          "supported_sentences": 5,
+          "total_sentences": 5,
+          "sentence_results": [
+            {
+              "sentence": "A Spark executor can run out of memory due to several factors outlined in the documentation:  \n**Large workloads** requiring more memory than allocated.",
+              "overlap_ratio": 0.6818,
+              "supported": true,
+              "overlapping_terms": [
+                "a",
+                "can",
+                "executor",
+                "in",
+                "large",
+                "memory",
+                "more",
+                "of",
+                "out",
+                "run",
+                "spark",
+                "than",
+                "the",
+                "to",
+                "workloads"
+              ]
+            },
+            {
+              "sentence": "**Cached data**占用ing significant memory, especially if the dataset is large.",
+              "overlap_ratio": 0.5455,
+              "supported": true,
+              "overlapping_terms": [
+                "cached",
+                "data",
+                "is",
+                "large",
+                "memory",
+                "the"
+              ]
+            },
+            {
+              "sentence": "**Memory-intensive operations** (e.g., shuffles, joins, aggregations) that temporarily increase memory usage during computation.",
+              "overlap_ratio": 0.5714,
+              "supported": true,
+              "overlapping_terms": [
+                "aggregations",
+                "computation",
+                "during",
+                "increase",
+                "intensive",
+                "joins",
+                "memory",
+                "operations"
+              ]
+            },
+            {
+              "sentence": "**Shuffle operations** redistributing data across executors, which can strain memory resources during data movement.",
+              "overlap_ratio": 0.6154,
+              "supported": true,
+              "overlapping_terms": [
+                "across",
+                "can",
+                "data",
+                "during",
+                "executors",
+                "memory",
+                "operations",
+                "shuffle"
+              ]
+            },
+            {
+              "sentence": "These factors are detailed in the retrieved context [spark_executor_out_of_memory_errors_000](#spark_executor_out_of_memory_errors_000), [spark_spark_executors_000](#spark_spark_executors_000), and [spark_spark_shuffle_000](#spark_spark_shuffle_000).",
+              "overlap_ratio": 0.6111,
+              "supported": true,
+              "overlapping_terms": [
+                "and",
+                "are",
+                "executor",
+                "executors",
+                "in",
+                "memory",
+                "of",
+                "out",
+                "shuffle",
+                "spark",
+                "the"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 1.0,
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 3,
+      "question": "What does a Spark executor do?",
+      "answerable": true,
+      "answer": "A Spark executor is a process responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation, and the amount of memory available to an executor affects the amount of data and workload it can handle. (Source IDs: spark_spark_executors_000, spark_spark_architecture_000)",
+      "evaluation": {
+        "faithfulness": {
+          "score": 1.0,
+          "supported_sentences": 3,
+          "total_sentences": 3,
+          "sentence_results": [
+            {
+              "sentence": "A Spark executor is a process responsible for executing tasks assigned by the driver.",
+              "overlap_ratio": 1.0,
+              "supported": true,
+              "overlapping_terms": [
+                "a",
+                "assigned",
+                "by",
+                "driver",
+                "executing",
+                "executor",
+                "for",
+                "is",
+                "process",
+                "responsible",
+                "spark",
+                "tasks",
+                "the"
+              ]
+            },
+            {
+              "sentence": "Executors can store data in memory and on disk during computation, and the amount of memory available to an executor affects the amount of data and workload it can handle.",
+              "overlap_ratio": 1.0,
+              "supported": true,
+              "overlapping_terms": [
+                "affects",
+                "amount",
+                "an",
+                "and",
+                "available",
+                "can",
+                "computation",
+                "data",
+                "disk",
+                "during",
+                "executor",
+                "executors",
+                "handle",
+                "in",
+                "it",
+                "memory",
+                "of",
+                "on",
+                "store",
+                "the",
+                "to",
+                "workload"
+              ]
+            },
+            {
+              "sentence": "(Source IDs: spark_spark_executors_000, spark_spark_architecture_000)",
+              "overlap_ratio": 0.3333,
+              "supported": true,
+              "overlapping_terms": [
+                "executors",
+                "spark"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 1.0,
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 4,
+      "question": "How do the Spark driver and executors work together?",
+      "answerable": true,
+      "answer": "The Spark driver coordinates the application, schedules tasks, and manages data shuffling between executors. Executors run tasks assigned by the driver, store data in memory or on disk, and handle computation. The driver also orchestrates shuffle operations, such as redistributing data across executors during joins or aggregations.  \n\n**Sources**:  \n- Spark Architecture [spark_spark_architecture_000]  \n- Spark Executors [spark_spark_executors_000]  \n- Spark Shuffle [spark_spark_shuffle_000]",
+      "evaluation": {
+        "faithfulness": {
+          "score": 1.0,
+          "supported_sentences": 4,
+          "total_sentences": 4,
+          "sentence_results": [
+            {
+              "sentence": "The Spark driver coordinates the application, schedules tasks, and manages data shuffling between executors.",
+              "overlap_ratio": 0.8462,
+              "supported": true,
+              "overlapping_terms": [
+                "and",
+                "application",
+                "between",
+                "coordinates",
+                "data",
+                "driver",
+                "executors",
+                "schedules",
+                "spark",
+                "tasks",
+                "the"
+              ]
+            },
+            {
+              "sentence": "Executors run tasks assigned by the driver, store data in memory or on disk, and handle computation.",
+              "overlap_ratio": 0.9412,
+              "supported": true,
+              "overlapping_terms": [
+                "and",
+                "assigned",
+                "by",
+                "computation",
+                "data",
+                "disk",
+                "driver",
+                "executors",
+                "handle",
+                "in",
+                "memory",
+                "on",
+                "run",
+                "store",
+                "tasks",
+                "the"
+              ]
+            },
+            {
+              "sentence": "The driver also orchestrates shuffle operations, such as redistributing data across executors during joins or aggregations.",
+              "overlap_ratio": 0.75,
+              "supported": true,
+              "overlapping_terms": [
+                "across",
+                "aggregations",
+                "as",
+                "data",
+                "driver",
+                "during",
+                "executors",
+                "joins",
+                "operations",
+                "shuffle",
+                "such",
+                "the"
+              ]
+            },
+            {
+              "sentence": "**Sources**:  \n- Spark Architecture [spark_spark_architecture_000]  \n- Spark Executors [spark_spark_executors_000]  \n- Spark Shuffle [spark_spark_shuffle_000]",
+              "overlap_ratio": 0.5,
+              "supported": true,
+              "overlapping_terms": [
+                "executors",
+                "shuffle",
+                "spark"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 1.0,
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 5,
+      "question": "How does Spark SQL work with structured data?",
+      "answerable": true,
+      "answer": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs. [spark_spark_sql_000]",
+      "evaluation": {
+        "faithfulness": {
+          "score": 1.0,
+          "supported_sentences": 3,
+          "total_sentences": 3,
+          "sentence_results": [
+            {
+              "sentence": "Spark SQL allows users to work with structured data using SQL queries.",
+              "overlap_ratio": 1.0,
+              "supported": true,
+              "overlapping_terms": [
+                "allows",
+                "data",
+                "queries",
+                "spark",
+                "sql",
+                "structured",
+                "to",
+                "users",
+                "using",
+                "with",
+                "work"
+              ]
+            },
+            {
+              "sentence": "It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+              "overlap_ratio": 1.0,
+              "supported": true,
+              "overlapping_terms": [
+                "and",
+                "apis",
+                "be",
+                "can",
+                "dataframe",
+                "datasets",
+                "for",
+                "interfaces",
+                "it",
+                "provides",
+                "querying",
+                "s",
+                "spark",
+                "structured",
+                "together",
+                "used",
+                "with"
+              ]
+            },
+            {
+              "sentence": "[spark_spark_sql_000]",
+              "overlap_ratio": 0.6667,
+              "supported": true,
+              "overlapping_terms": [
+                "spark",
+                "sql"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 1.0,
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 6,
+      "question": "How do Kafka partitions distribute records across consumers?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The documentation focuses on Apache Spark's architecture, executors, shuffling, and memory management, but does not discuss Kafka partitions or record distribution across consumers.",
+      "evaluation": {
+        "faithfulness": {
+          "score": 0.5,
+          "supported_sentences": 1,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "overlap_ratio": 0.1667,
+              "supported": false,
+              "overlapping_terms": [
+                "the",
+                "to"
+              ]
+            },
+            {
+              "sentence": "The documentation focuses on Apache Spark's architecture, executors, shuffling, and memory management, but does not discuss Kafka partitions or record distribution across consumers.",
+              "overlap_ratio": 0.375,
+              "supported": true,
+              "overlapping_terms": [
+                "across",
+                "and",
+                "apache",
+                "executors",
+                "memory",
+                "on",
+                "or",
+                "spark",
+                "the"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 0.5,
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 7,
+      "question": "What ACID guarantees does Delta Lake provide?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question.",
+      "evaluation": {
+        "faithfulness": {
+          "score": 0.0,
+          "supported_sentences": 0,
+          "total_sentences": 1,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "overlap_ratio": 0.1667,
+              "supported": false,
+              "overlapping_terms": [
+                "the",
+                "to"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 0.0,
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 8,
+      "question": "How do Airflow DAGs orchestrate work in Microsoft Fabric?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The provided documentation focuses on Apache Spark topics such as shuffle operations, architecture, SQL, and memory errors, but does not mention Airflow DAGs or Microsoft Fabric.",
+      "evaluation": {
+        "faithfulness": {
+          "score": 0.5,
+          "supported_sentences": 1,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "overlap_ratio": 0.1667,
+              "supported": false,
+              "overlapping_terms": [
+                "the",
+                "to"
+              ]
+            },
+            {
+              "sentence": "The provided documentation focuses on Apache Spark topics such as shuffle operations, architecture, SQL, and memory errors, but does not mention Airflow DAGs or Microsoft Fabric.",
+              "overlap_ratio": 0.4231,
+              "supported": true,
+              "overlapping_terms": [
+                "and",
+                "apache",
+                "as",
+                "memory",
+                "operations",
+                "or",
+                "shuffle",
+                "spark",
+                "sql",
+                "such",
+                "the"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 0.5,
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 9,
+      "question": "How do I configure a Kubernetes cluster?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The provided documentation focuses on Apache Spark, shuffle operations, executors, and memory management, but does not cover Kubernetes cluster configuration.",
+      "evaluation": {
+        "faithfulness": {
+          "score": 0.5,
+          "supported_sentences": 1,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "overlap_ratio": 0.1667,
+              "supported": false,
+              "overlapping_terms": [
+                "the",
+                "to"
+              ]
+            },
+            {
+              "sentence": "The provided documentation focuses on Apache Spark, shuffle operations, executors, and memory management, but does not cover Kubernetes cluster configuration.",
+              "overlap_ratio": 0.45,
+              "supported": true,
+              "overlapping_terms": [
+                "and",
+                "apache",
+                "executors",
+                "memory",
+                "on",
+                "operations",
+                "shuffle",
+                "spark",
+                "the"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 0.5,
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 10,
+      "question": "What is the best way to optimize a Snowflake warehouse?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The provided documentation focuses on Apache Spark topics such as executors, memory management, and architecture, but does not include content related to Snowflake warehouse optimization.",
+      "evaluation": {
+        "faithfulness": {
+          "score": 0.5,
+          "supported_sentences": 1,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "overlap_ratio": 0.1667,
+              "supported": false,
+              "overlapping_terms": [
+                "the",
+                "to"
+              ]
+            },
+            {
+              "sentence": "The provided documentation focuses on Apache Spark topics such as executors, memory management, and architecture, but does not include content related to Snowflake warehouse optimization.",
+              "overlap_ratio": 0.4,
+              "supported": true,
+              "overlapping_terms": [
+                "and",
+                "apache",
+                "as",
+                "executors",
+                "memory",
+                "on",
+                "spark",
+                "such",
+                "the",
+                "to"
+              ]
+            }
+          ]
+        },
+        "grounding_score": 0.5,
+        "refusal_correct": true
+      }
+    }
+  ]
+}

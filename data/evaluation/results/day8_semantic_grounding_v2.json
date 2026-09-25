@@ -1,0 +1,1715 @@
+{
+  "dataset": "data/evaluation/rag_eval.json",
+  "pipeline": "dense + BM25 + RRF + cross-encoder reranker",
+  "evaluation_type": "lexical_and_clean_semantic_grounding_v2",
+  "semantic_model": "cross-encoder/nli-deberta-v3-base",
+  "overlap_threshold": 0.3,
+  "summary": {
+    "answerable_case_count": 5,
+    "unsupported_case_count": 5,
+    "average_lexical_faithfulness": 1.0,
+    "average_lexical_grounding": 1.0,
+    "average_semantic_faithfulness": 0.6667,
+    "average_relevance": {
+      "embedding_cosine_similarity": 0.8704,
+      "cross_encoder_score": 0.9996
+    },
+    "average_citations": {
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "correct_refusals": 5,
+    "refusal_correctness": 1.0
+  },
+  "results": [
+    {
+      "id": 1,
+      "question": "What is Apache Spark?",
+      "answerable": true,
+      "answer": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel. (Source ID: spark_apache_spark_000)",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 1.0,
+            "supported_sentences": 3,
+            "total_sentences": 3,
+            "sentence_results": [
+              {
+                "sentence": "Apache Spark is a distributed computing engine designed for processing large datasets.",
+                "overlap_ratio": 1.0,
+                "supported": true,
+                "overlapping_terms": [
+                  "a",
+                  "apache",
+                  "computing",
+                  "datasets",
+                  "designed",
+                  "distributed",
+                  "engine",
+                  "for",
+                  "is",
+                  "large",
+                  "processing",
+                  "spark"
+                ]
+              },
+              {
+                "sentence": "A Spark application can run across multiple machines and execute tasks in parallel.",
+                "overlap_ratio": 1.0,
+                "supported": true,
+                "overlapping_terms": [
+                  "a",
+                  "across",
+                  "and",
+                  "application",
+                  "can",
+                  "execute",
+                  "in",
+                  "machines",
+                  "multiple",
+                  "parallel",
+                  "run",
+                  "spark",
+                  "tasks"
+                ]
+              },
+              {
+                "sentence": "(Source ID: spark_apache_spark_000)",
+                "overlap_ratio": 0.4,
+                "supported": true,
+                "overlapping_terms": [
+                  "apache",
+                  "spark"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 1.0
+        },
+        "semantic": {
+          "semantic_faithfulness": 1.0,
+          "entailed_sentences": 2,
+          "neutral_sentences": 0,
+          "contradicted_sentences": 0,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "Apache Spark is a distributed computing engine designed for processing large datasets.",
+              "best_label": "entailment",
+              "best_score": 0.9906,
+              "best_chunk_id": "spark_apache_spark_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "entailment",
+                  "score": 0.9905520677566528
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9987333416938782
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9993230104446411
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9879727363586426
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9993683695793152
+                }
+              ]
+            },
+            {
+              "sentence": "A Spark application can run across multiple machines and execute tasks in parallel.",
+              "best_label": "entailment",
+              "best_score": 0.995,
+              "best_chunk_id": "spark_apache_spark_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "entailment",
+                  "score": 0.9949510097503662
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9983850717544556
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9989981055259705
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9994427561759949
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9993721842765808
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.8477,
+          "cross_encoder_score": 1.0
+        },
+        "citations": {
+          "cited_ids": [
+            "spark_apache_spark_000"
+          ],
+          "valid_cited_ids": [
+            "spark_apache_spark_000"
+          ],
+          "relevant_cited_ids": [
+            "spark_apache_spark_000"
+          ],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 2,
+      "question": "Why can a Spark executor run out of memory?",
+      "answerable": true,
+      "answer": "A Spark executor can run out of memory due to several factors outlined in the documentation:  \n1. **Large workloads** requiring more memory than allocated.  \n2. **Cached data**占用ing significant memory, especially if the dataset is large.  \n3. **Memory-intensive operations** (e.g., shuffles, joins, aggregations) that temporarily increase memory usage during computation.  \n4. **Shuffle operations** redistributing data across executors, which can strain memory resources during data movement.  \n\nThese factors are detailed in the retrieved context [spark_executor_out_of_memory_errors_000](#spark_executor_out_of_memory_errors_000), [spark_spark_executors_000](#spark_spark_executors_000), and [spark_spark_shuffle_000](#spark_spark_shuffle_000).",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 1.0,
+            "supported_sentences": 5,
+            "total_sentences": 5,
+            "sentence_results": [
+              {
+                "sentence": "A Spark executor can run out of memory due to several factors outlined in the documentation:  \n**Large workloads** requiring more memory than allocated.",
+                "overlap_ratio": 0.6818,
+                "supported": true,
+                "overlapping_terms": [
+                  "a",
+                  "can",
+                  "executor",
+                  "in",
+                  "large",
+                  "memory",
+                  "more",
+                  "of",
+                  "out",
+                  "run",
+                  "spark",
+                  "than",
+                  "the",
+                  "to",
+                  "workloads"
+                ]
+              },
+              {
+                "sentence": "**Cached data**占用ing significant memory, especially if the dataset is large.",
+                "overlap_ratio": 0.5455,
+                "supported": true,
+                "overlapping_terms": [
+                  "cached",
+                  "data",
+                  "is",
+                  "large",
+                  "memory",
+                  "the"
+                ]
+              },
+              {
+                "sentence": "**Memory-intensive operations** (e.g., shuffles, joins, aggregations) that temporarily increase memory usage during computation.",
+                "overlap_ratio": 0.5714,
+                "supported": true,
+                "overlapping_terms": [
+                  "aggregations",
+                  "computation",
+                  "during",
+                  "increase",
+                  "intensive",
+                  "joins",
+                  "memory",
+                  "operations"
+                ]
+              },
+              {
+                "sentence": "**Shuffle operations** redistributing data across executors, which can strain memory resources during data movement.",
+                "overlap_ratio": 0.6154,
+                "supported": true,
+                "overlapping_terms": [
+                  "across",
+                  "can",
+                  "data",
+                  "during",
+                  "executors",
+                  "memory",
+                  "operations",
+                  "shuffle"
+                ]
+              },
+              {
+                "sentence": "These factors are detailed in the retrieved context [spark_executor_out_of_memory_errors_000](#spark_executor_out_of_memory_errors_000), [spark_spark_executors_000](#spark_spark_executors_000), and [spark_spark_shuffle_000](#spark_spark_shuffle_000).",
+                "overlap_ratio": 0.6111,
+                "supported": true,
+                "overlapping_terms": [
+                  "and",
+                  "are",
+                  "executor",
+                  "executors",
+                  "in",
+                  "memory",
+                  "of",
+                  "out",
+                  "shuffle",
+                  "spark",
+                  "the"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 1.0
+        },
+        "semantic": {
+          "semantic_faithfulness": 0.0,
+          "entailed_sentences": 0,
+          "neutral_sentences": 4,
+          "contradicted_sentences": 0,
+          "total_sentences": 4,
+          "sentence_results": [
+            {
+              "sentence": "A Spark executor can run out of memory due to several factors outlined in the documentation: **Large workloads** requiring more memory than allocated.",
+              "best_label": "neutral",
+              "best_score": 0.9996,
+              "best_chunk_id": "spark_spark_architecture_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9985104203224182
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9995917677879333
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9995065927505493
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9978442192077637
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9993143081665039
+                }
+              ]
+            },
+            {
+              "sentence": "**Cached data**占用ing significant memory, especially if the dataset is large.",
+              "best_label": "neutral",
+              "best_score": 0.9996,
+              "best_chunk_id": "spark_spark_architecture_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9971454739570618
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9996123909950256
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9994096755981445
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9970389604568481
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.999506950378418
+                }
+              ]
+            },
+            {
+              "sentence": "**Memory-intensive operations** (e.g., shuffles, joins, aggregations) that temporarily increase memory usage during computation.",
+              "best_label": "neutral",
+              "best_score": 0.9992,
+              "best_chunk_id": "spark_spark_executors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9979639053344727
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9989597797393799
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9992430210113525
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9933236241340637
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9984377026557922
+                }
+              ]
+            },
+            {
+              "sentence": "**Shuffle operations** redistributing data across executors, which can strain memory resources during data movement.",
+              "best_label": "neutral",
+              "best_score": 0.9996,
+              "best_chunk_id": "spark_spark_shuffle_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9932138919830322
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.998683750629425
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9984488487243652
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9950330257415771
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9995736479759216
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.8842,
+          "cross_encoder_score": 0.9998
+        },
+        "citations": {
+          "cited_ids": [
+            "spark_executor_out_of_memory_errors_000",
+            "spark_spark_executors_000",
+            "spark_spark_shuffle_000"
+          ],
+          "valid_cited_ids": [
+            "spark_executor_out_of_memory_errors_000",
+            "spark_spark_executors_000",
+            "spark_spark_shuffle_000"
+          ],
+          "relevant_cited_ids": [
+            "spark_executor_out_of_memory_errors_000"
+          ],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 3,
+      "question": "What does a Spark executor do?",
+      "answerable": true,
+      "answer": "A Spark executor is a process responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation, and the amount of memory available to an executor affects the amount of data and workload it can handle. (Source IDs: spark_spark_executors_000, spark_spark_architecture_000)",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 1.0,
+            "supported_sentences": 3,
+            "total_sentences": 3,
+            "sentence_results": [
+              {
+                "sentence": "A Spark executor is a process responsible for executing tasks assigned by the driver.",
+                "overlap_ratio": 1.0,
+                "supported": true,
+                "overlapping_terms": [
+                  "a",
+                  "assigned",
+                  "by",
+                  "driver",
+                  "executing",
+                  "executor",
+                  "for",
+                  "is",
+                  "process",
+                  "responsible",
+                  "spark",
+                  "tasks",
+                  "the"
+                ]
+              },
+              {
+                "sentence": "Executors can store data in memory and on disk during computation, and the amount of memory available to an executor affects the amount of data and workload it can handle.",
+                "overlap_ratio": 1.0,
+                "supported": true,
+                "overlapping_terms": [
+                  "affects",
+                  "amount",
+                  "an",
+                  "and",
+                  "available",
+                  "can",
+                  "computation",
+                  "data",
+                  "disk",
+                  "during",
+                  "executor",
+                  "executors",
+                  "handle",
+                  "in",
+                  "it",
+                  "memory",
+                  "of",
+                  "on",
+                  "store",
+                  "the",
+                  "to",
+                  "workload"
+                ]
+              },
+              {
+                "sentence": "(Source IDs: spark_spark_executors_000, spark_spark_architecture_000)",
+                "overlap_ratio": 0.3333,
+                "supported": true,
+                "overlapping_terms": [
+                  "executors",
+                  "spark"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 1.0
+        },
+        "semantic": {
+          "semantic_faithfulness": 1.0,
+          "entailed_sentences": 2,
+          "neutral_sentences": 0,
+          "contradicted_sentences": 0,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "A Spark executor is a process responsible for executing tasks assigned by the driver.",
+              "best_label": "entailment",
+              "best_score": 0.9865,
+              "best_chunk_id": "spark_spark_architecture_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "entailment",
+                  "score": 0.9865211248397827
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9993547797203064
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.992230236530304
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9980872273445129
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9976391792297363
+                }
+              ]
+            },
+            {
+              "sentence": "Executors can store data in memory and on disk during computation, and the amount of memory available to an executor affects the amount of data and workload it can handle.",
+              "best_label": "entailment",
+              "best_score": 0.9967,
+              "best_chunk_id": "spark_spark_executors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9985028505325317
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "entailment",
+                  "score": 0.9967232346534729
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.996907651424408
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9983330368995667
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.997205913066864
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.8916,
+          "cross_encoder_score": 1.0
+        },
+        "citations": {
+          "cited_ids": [
+            "spark_spark_architecture_000",
+            "spark_spark_executors_000"
+          ],
+          "valid_cited_ids": [
+            "spark_spark_architecture_000",
+            "spark_spark_executors_000"
+          ],
+          "relevant_cited_ids": [
+            "spark_spark_executors_000"
+          ],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 4,
+      "question": "How do the Spark driver and executors work together?",
+      "answerable": true,
+      "answer": "The Spark driver coordinates the application, schedules tasks, and manages data shuffling between executors. Executors run tasks assigned by the driver, store data in memory or on disk, and handle computation. The driver also orchestrates shuffle operations, such as redistributing data across executors during joins or aggregations.  \n\n**Sources**:  \n- Spark Architecture [spark_spark_architecture_000]  \n- Spark Executors [spark_spark_executors_000]  \n- Spark Shuffle [spark_spark_shuffle_000]",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 1.0,
+            "supported_sentences": 4,
+            "total_sentences": 4,
+            "sentence_results": [
+              {
+                "sentence": "The Spark driver coordinates the application, schedules tasks, and manages data shuffling between executors.",
+                "overlap_ratio": 0.8462,
+                "supported": true,
+                "overlapping_terms": [
+                  "and",
+                  "application",
+                  "between",
+                  "coordinates",
+                  "data",
+                  "driver",
+                  "executors",
+                  "schedules",
+                  "spark",
+                  "tasks",
+                  "the"
+                ]
+              },
+              {
+                "sentence": "Executors run tasks assigned by the driver, store data in memory or on disk, and handle computation.",
+                "overlap_ratio": 0.9412,
+                "supported": true,
+                "overlapping_terms": [
+                  "and",
+                  "assigned",
+                  "by",
+                  "computation",
+                  "data",
+                  "disk",
+                  "driver",
+                  "executors",
+                  "handle",
+                  "in",
+                  "memory",
+                  "on",
+                  "run",
+                  "store",
+                  "tasks",
+                  "the"
+                ]
+              },
+              {
+                "sentence": "The driver also orchestrates shuffle operations, such as redistributing data across executors during joins or aggregations.",
+                "overlap_ratio": 0.75,
+                "supported": true,
+                "overlapping_terms": [
+                  "across",
+                  "aggregations",
+                  "as",
+                  "data",
+                  "driver",
+                  "during",
+                  "executors",
+                  "joins",
+                  "operations",
+                  "shuffle",
+                  "such",
+                  "the"
+                ]
+              },
+              {
+                "sentence": "**Sources**:  \n- Spark Architecture [spark_spark_architecture_000]  \n- Spark Executors [spark_spark_executors_000]  \n- Spark Shuffle [spark_spark_shuffle_000]",
+                "overlap_ratio": 0.5,
+                "supported": true,
+                "overlapping_terms": [
+                  "executors",
+                  "shuffle",
+                  "spark"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 1.0
+        },
+        "semantic": {
+          "semantic_faithfulness": 0.3333,
+          "entailed_sentences": 1,
+          "neutral_sentences": 2,
+          "contradicted_sentences": 0,
+          "total_sentences": 3,
+          "sentence_results": [
+            {
+              "sentence": "The Spark driver coordinates the application, schedules tasks, and manages data shuffling between executors.",
+              "best_label": "neutral",
+              "best_score": 0.9996,
+              "best_chunk_id": "spark_spark_shuffle_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9937637448310852
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9996259212493896
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9990567564964294
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9956839084625244
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9981074333190918
+                }
+              ]
+            },
+            {
+              "sentence": "Executors run tasks assigned by the driver, store data in memory or on disk, and handle computation.",
+              "best_label": "entailment",
+              "best_score": 0.9956,
+              "best_chunk_id": "spark_spark_executors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "entailment",
+                  "score": 0.9777544140815735
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9983165264129639
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "entailment",
+                  "score": 0.9955741167068481
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.991360604763031
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9968474507331848
+                }
+              ]
+            },
+            {
+              "sentence": "The driver also orchestrates shuffle operations, such as redistributing data across executors during joins or aggregations.",
+              "best_label": "neutral",
+              "best_score": 0.9996,
+              "best_chunk_id": "spark_spark_executors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9994747042655945
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9971016049385071
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9995662569999695
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.999545156955719
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.999479353427887
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.8429,
+          "cross_encoder_score": 0.9999
+        },
+        "citations": {
+          "cited_ids": [
+            "spark_spark_architecture_000",
+            "spark_spark_executors_000",
+            "spark_spark_shuffle_000"
+          ],
+          "valid_cited_ids": [
+            "spark_spark_architecture_000",
+            "spark_spark_executors_000",
+            "spark_spark_shuffle_000"
+          ],
+          "relevant_cited_ids": [
+            "spark_spark_architecture_000",
+            "spark_spark_executors_000"
+          ],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 5,
+      "question": "How does Spark SQL work with structured data?",
+      "answerable": true,
+      "answer": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs. [spark_spark_sql_000]",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 1.0,
+            "supported_sentences": 3,
+            "total_sentences": 3,
+            "sentence_results": [
+              {
+                "sentence": "Spark SQL allows users to work with structured data using SQL queries.",
+                "overlap_ratio": 1.0,
+                "supported": true,
+                "overlapping_terms": [
+                  "allows",
+                  "data",
+                  "queries",
+                  "spark",
+                  "sql",
+                  "structured",
+                  "to",
+                  "users",
+                  "using",
+                  "with",
+                  "work"
+                ]
+              },
+              {
+                "sentence": "It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                "overlap_ratio": 1.0,
+                "supported": true,
+                "overlapping_terms": [
+                  "and",
+                  "apis",
+                  "be",
+                  "can",
+                  "dataframe",
+                  "datasets",
+                  "for",
+                  "interfaces",
+                  "it",
+                  "provides",
+                  "querying",
+                  "s",
+                  "spark",
+                  "structured",
+                  "together",
+                  "used",
+                  "with"
+                ]
+              },
+              {
+                "sentence": "[spark_spark_sql_000]",
+                "overlap_ratio": 0.6667,
+                "supported": true,
+                "overlapping_terms": [
+                  "spark",
+                  "sql"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 1.0
+        },
+        "semantic": {
+          "semantic_faithfulness": 1.0,
+          "entailed_sentences": 2,
+          "neutral_sentences": 0,
+          "contradicted_sentences": 0,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "Spark SQL allows users to work with structured data using SQL queries.",
+              "best_label": "entailment",
+              "best_score": 0.9969,
+              "best_chunk_id": "spark_spark_sql_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "entailment",
+                  "score": 0.9968563318252563
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9965068697929382
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9970539808273315
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9744173288345337
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9982386827468872
+                }
+              ]
+            },
+            {
+              "sentence": "It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+              "best_label": "entailment",
+              "best_score": 0.9918,
+              "best_chunk_id": "spark_spark_sql_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "entailment",
+                  "score": 0.9918339252471924
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9985516667366028
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9993915557861328
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9966421127319336
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9989733695983887
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.8857,
+          "cross_encoder_score": 0.9985
+        },
+        "citations": {
+          "cited_ids": [
+            "spark_spark_sql_000"
+          ],
+          "valid_cited_ids": [
+            "spark_spark_sql_000"
+          ],
+          "relevant_cited_ids": [
+            "spark_spark_sql_000"
+          ],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": null
+      }
+    },
+    {
+      "id": 6,
+      "question": "How do Kafka partitions distribute records across consumers?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The documentation focuses on Apache Spark's architecture, executors, shuffling, and memory management, but does not discuss Kafka partitions or record distribution across consumers.",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 0.5,
+            "supported_sentences": 1,
+            "total_sentences": 2,
+            "sentence_results": [
+              {
+                "sentence": "The retrieved context does not provide enough information to answer this question.",
+                "overlap_ratio": 0.1667,
+                "supported": false,
+                "overlapping_terms": [
+                  "the",
+                  "to"
+                ]
+              },
+              {
+                "sentence": "The documentation focuses on Apache Spark's architecture, executors, shuffling, and memory management, but does not discuss Kafka partitions or record distribution across consumers.",
+                "overlap_ratio": 0.375,
+                "supported": true,
+                "overlapping_terms": [
+                  "across",
+                  "and",
+                  "apache",
+                  "executors",
+                  "memory",
+                  "on",
+                  "or",
+                  "spark",
+                  "the"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 0.5
+        },
+        "semantic": {
+          "semantic_faithfulness": 0.0,
+          "entailed_sentences": 0,
+          "neutral_sentences": 2,
+          "contradicted_sentences": 0,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "best_label": "neutral",
+              "best_score": 0.9995,
+              "best_chunk_id": "spark_executor_out_of_memory_errors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9993385672569275
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9987448453903198
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9994927644729614
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9963496923446655
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9746578335762024
+                }
+              ]
+            },
+            {
+              "sentence": "The documentation focuses on Apache Spark's architecture, executors, shuffling, and memory management, but does not discuss Kafka partitions or record distribution across consumers.",
+              "best_label": "neutral",
+              "best_score": 0.9995,
+              "best_chunk_id": "spark_apache_spark_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9990394711494446
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9994394183158875
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9994710087776184
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9993628859519958
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9995063543319702
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.8262,
+          "cross_encoder_score": 0.0211
+        },
+        "citations": {
+          "cited_ids": [],
+          "valid_cited_ids": [],
+          "relevant_cited_ids": [],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 7,
+      "question": "What ACID guarantees does Delta Lake provide?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question.",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 0.0,
+            "supported_sentences": 0,
+            "total_sentences": 1,
+            "sentence_results": [
+              {
+                "sentence": "The retrieved context does not provide enough information to answer this question.",
+                "overlap_ratio": 0.1667,
+                "supported": false,
+                "overlapping_terms": [
+                  "the",
+                  "to"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 0.0
+        },
+        "semantic": {
+          "semantic_faithfulness": 0.0,
+          "entailed_sentences": 0,
+          "neutral_sentences": 1,
+          "contradicted_sentences": 0,
+          "total_sentences": 1,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "best_label": "neutral",
+              "best_score": 0.9995,
+              "best_chunk_id": "spark_executor_out_of_memory_errors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9994927644729614
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9911830425262451
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9963496923446655
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9993385672569275
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9746578335762024
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.4214,
+          "cross_encoder_score": 0.0
+        },
+        "citations": {
+          "cited_ids": [],
+          "valid_cited_ids": [],
+          "relevant_cited_ids": [],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 8,
+      "question": "How do Airflow DAGs orchestrate work in Microsoft Fabric?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The provided documentation focuses on Apache Spark topics such as shuffle operations, architecture, SQL, and memory errors, but does not mention Airflow DAGs or Microsoft Fabric.",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 0.5,
+            "supported_sentences": 1,
+            "total_sentences": 2,
+            "sentence_results": [
+              {
+                "sentence": "The retrieved context does not provide enough information to answer this question.",
+                "overlap_ratio": 0.1667,
+                "supported": false,
+                "overlapping_terms": [
+                  "the",
+                  "to"
+                ]
+              },
+              {
+                "sentence": "The provided documentation focuses on Apache Spark topics such as shuffle operations, architecture, SQL, and memory errors, but does not mention Airflow DAGs or Microsoft Fabric.",
+                "overlap_ratio": 0.4231,
+                "supported": true,
+                "overlapping_terms": [
+                  "and",
+                  "apache",
+                  "as",
+                  "memory",
+                  "operations",
+                  "or",
+                  "shuffle",
+                  "spark",
+                  "sql",
+                  "such",
+                  "the"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 0.5
+        },
+        "semantic": {
+          "semantic_faithfulness": 0.0,
+          "entailed_sentences": 0,
+          "neutral_sentences": 2,
+          "contradicted_sentences": 0,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "best_label": "neutral",
+              "best_score": 0.9995,
+              "best_chunk_id": "spark_executor_out_of_memory_errors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9993385672569275
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9746578335762024
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9963496923446655
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9911830425262451
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9994927644729614
+                }
+              ]
+            },
+            {
+              "sentence": "The provided documentation focuses on Apache Spark topics such as shuffle operations, architecture, SQL, and memory errors, but does not mention Airflow DAGs or Microsoft Fabric.",
+              "best_label": "neutral",
+              "best_score": 0.9996,
+              "best_chunk_id": "spark_executor_out_of_memory_errors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9995588660240173
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9994742274284363
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9995871186256409
+                },
+                {
+                  "chunk_id": "spark_spark_sql_000",
+                  "document": "Spark SQL allows users to work with structured data using SQL queries. It provides interfaces for querying structured datasets and can be used together with Spark's DataFrame APIs.",
+                  "label": "neutral",
+                  "score": 0.9986984729766846
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9996058344841003
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.8314,
+          "cross_encoder_score": 0.0001
+        },
+        "citations": {
+          "cited_ids": [],
+          "valid_cited_ids": [],
+          "relevant_cited_ids": [],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 9,
+      "question": "How do I configure a Kubernetes cluster?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The provided documentation focuses on Apache Spark, shuffle operations, executors, and memory management, but does not cover Kubernetes cluster configuration.",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 0.5,
+            "supported_sentences": 1,
+            "total_sentences": 2,
+            "sentence_results": [
+              {
+                "sentence": "The retrieved context does not provide enough information to answer this question.",
+                "overlap_ratio": 0.1667,
+                "supported": false,
+                "overlapping_terms": [
+                  "the",
+                  "to"
+                ]
+              },
+              {
+                "sentence": "The provided documentation focuses on Apache Spark, shuffle operations, executors, and memory management, but does not cover Kubernetes cluster configuration.",
+                "overlap_ratio": 0.45,
+                "supported": true,
+                "overlapping_terms": [
+                  "and",
+                  "apache",
+                  "executors",
+                  "memory",
+                  "on",
+                  "operations",
+                  "shuffle",
+                  "spark",
+                  "the"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 0.5
+        },
+        "semantic": {
+          "semantic_faithfulness": 0.0,
+          "entailed_sentences": 0,
+          "neutral_sentences": 2,
+          "contradicted_sentences": 0,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "best_label": "neutral",
+              "best_score": 0.9995,
+              "best_chunk_id": "spark_executor_out_of_memory_errors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9993385672569275
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9746578335762024
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9963496923446655
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9987448453903198
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9994927644729614
+                }
+              ]
+            },
+            {
+              "sentence": "The provided documentation focuses on Apache Spark, shuffle operations, executors, and memory management, but does not cover Kubernetes cluster configuration.",
+              "best_label": "neutral",
+              "best_score": 0.9997,
+              "best_chunk_id": "spark_spark_executors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9996019005775452
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9992085099220276
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9991866946220398
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9996607303619385
+                },
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9996439218521118
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.7715,
+          "cross_encoder_score": 0.0002
+        },
+        "citations": {
+          "cited_ids": [],
+          "valid_cited_ids": [],
+          "relevant_cited_ids": [],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": true
+      }
+    },
+    {
+      "id": 10,
+      "question": "What is the best way to optimize a Snowflake warehouse?",
+      "answerable": false,
+      "answer": "The retrieved context does not provide enough information to answer this question. The provided documentation focuses on Apache Spark topics such as executors, memory management, and architecture, but does not include content related to Snowflake warehouse optimization.",
+      "evaluation": {
+        "lexical": {
+          "faithfulness": {
+            "score": 0.5,
+            "supported_sentences": 1,
+            "total_sentences": 2,
+            "sentence_results": [
+              {
+                "sentence": "The retrieved context does not provide enough information to answer this question.",
+                "overlap_ratio": 0.1667,
+                "supported": false,
+                "overlapping_terms": [
+                  "the",
+                  "to"
+                ]
+              },
+              {
+                "sentence": "The provided documentation focuses on Apache Spark topics such as executors, memory management, and architecture, but does not include content related to Snowflake warehouse optimization.",
+                "overlap_ratio": 0.4,
+                "supported": true,
+                "overlapping_terms": [
+                  "and",
+                  "apache",
+                  "as",
+                  "executors",
+                  "memory",
+                  "on",
+                  "spark",
+                  "such",
+                  "the",
+                  "to"
+                ]
+              }
+            ]
+          },
+          "grounding_score": 0.5
+        },
+        "semantic": {
+          "semantic_faithfulness": 0.0,
+          "entailed_sentences": 0,
+          "neutral_sentences": 2,
+          "contradicted_sentences": 0,
+          "total_sentences": 2,
+          "sentence_results": [
+            {
+              "sentence": "The retrieved context does not provide enough information to answer this question.",
+              "best_label": "neutral",
+              "best_score": 0.9995,
+              "best_chunk_id": "spark_executor_out_of_memory_errors_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9994927644729614
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9746578335762024
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9993385672569275
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.9987448453903198
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.9963496923446655
+                }
+              ]
+            },
+            {
+              "sentence": "The provided documentation focuses on Apache Spark topics such as executors, memory management, and architecture, but does not include content related to Snowflake warehouse optimization.",
+              "best_label": "neutral",
+              "best_score": 0.9997,
+              "best_chunk_id": "spark_spark_architecture_000",
+              "evidence": [
+                {
+                  "chunk_id": "spark_executor_out_of_memory_errors_000",
+                  "document": "An executor can encounter an out-of-memory error when the workload requires more memory than the executor has available. Large workloads, cached data, or memory-intensive operations can increase memory requirements.",
+                  "label": "neutral",
+                  "score": 0.9994521737098694
+                },
+                {
+                  "chunk_id": "spark_apache_spark_000",
+                  "document": "Apache Spark is a distributed computing engine designed for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+                  "label": "neutral",
+                  "score": 0.9995829463005066
+                },
+                {
+                  "chunk_id": "spark_spark_shuffle_000",
+                  "document": "Shuffle operations redistribute data across executors. Operations such as joins and aggregations can require data to move between executors during a shuffle.",
+                  "label": "neutral",
+                  "score": 0.9994338154792786
+                },
+                {
+                  "chunk_id": "spark_spark_executors_000",
+                  "document": "Executors are processes responsible for executing tasks assigned by the driver. Executors can store data in memory and on disk during computation. The amount of memory available to an executor affects the amount of data and workload it can handle.",
+                  "label": "neutral",
+                  "score": 0.999398946762085
+                },
+                {
+                  "chunk_id": "spark_spark_architecture_000",
+                  "document": "A Spark application typically consists of a driver process and executor processes. The driver coordinates the application and schedules work, while executors run tasks and store data during computation.",
+                  "label": "neutral",
+                  "score": 0.999665379524231
+                }
+              ]
+            }
+          ]
+        },
+        "relevance": {
+          "embedding_cosine_similarity": 0.758,
+          "cross_encoder_score": 0.0055
+        },
+        "citations": {
+          "cited_ids": [],
+          "valid_cited_ids": [],
+          "relevant_cited_ids": [],
+          "citation_precision": 1.0,
+          "citation_recall": 1.0
+        },
+        "refusal_correct": true
+      }
+    }
+  ]
+}

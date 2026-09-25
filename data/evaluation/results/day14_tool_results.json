@@ -1,0 +1,261 @@
+{
+  "total_cases": 12,
+  "routing_accuracy": 0.9167,
+  "tool_cases": 9,
+  "tool_selection_accuracy": 0.8889,
+  "argument_accuracy": 0.8889,
+  "successful_tool_executions": 8,
+  "per_tool_stats": {
+    "get_table_schema": {
+      "total": 2,
+      "correct_tool": 2,
+      "correct_args": 2,
+      "success_exec": 2
+    },
+    "get_table_row_count": {
+      "total": 4,
+      "correct_tool": 3,
+      "correct_args": 3,
+      "success_exec": 3
+    },
+    "get_table_sample": {
+      "total": 3,
+      "correct_tool": 3,
+      "correct_args": 3,
+      "success_exec": 3
+    }
+  },
+  "detailed_results": [
+    {
+      "id": "schema_001",
+      "query": "What columns are in employees?",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_schema",
+      "actual_tool": "get_table_schema",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "employees"
+      },
+      "actual_arguments": {
+        "table_name": "employees"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 20.9287
+    },
+    {
+      "id": "schema_002",
+      "query": "Show me the structure of orders.",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_schema",
+      "actual_tool": "get_table_schema",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "orders"
+      },
+      "actual_arguments": {
+        "table_name": "orders"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 12.7129
+    },
+    {
+      "id": "count_001",
+      "query": "How many orders are there?",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_row_count",
+      "actual_tool": "get_table_row_count",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "orders"
+      },
+      "actual_arguments": {
+        "table_name": "orders"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 12.3479
+    },
+    {
+      "id": "count_002",
+      "query": "What is the row count of employees?",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_row_count",
+      "actual_tool": "get_table_row_count",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "employees"
+      },
+      "actual_arguments": {
+        "table_name": "employees"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 8.0031
+    },
+    {
+      "id": "count_003",
+      "query": "How many customers exist in the database?",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_row_count",
+      "actual_tool": "get_table_row_count",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "customers"
+      },
+      "actual_arguments": {
+        "table_name": "customers"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 14.3645
+    },
+    {
+      "id": "sample_001",
+      "query": "Show me 3 customers.",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_sample",
+      "actual_tool": "get_table_sample",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "customers",
+        "limit": 3
+      },
+      "actual_arguments": {
+        "table_name": "customers",
+        "limit": 3
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 8.5992
+    },
+    {
+      "id": "sample_002",
+      "query": "Give me 2 sample records from employees.",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_sample",
+      "actual_tool": "get_table_sample",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "employees",
+        "limit": 2
+      },
+      "actual_arguments": {
+        "table_name": "employees",
+        "limit": 2
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 8.9983
+    },
+    {
+      "id": "sample_003",
+      "query": "Show me sample rows from orders.",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_sample",
+      "actual_tool": "get_table_sample",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "orders"
+      },
+      "actual_arguments": {
+        "table_name": "orders",
+        "limit": 5
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 8.1108
+    },
+    {
+      "id": "rag_001",
+      "query": "What is Apache Spark?",
+      "category": "rag",
+      "expected_route": "rag",
+      "actual_route": "rag",
+      "route_correct": true,
+      "expected_tool": null,
+      "actual_tool": null,
+      "tool_correct": null,
+      "expected_arguments": {},
+      "actual_arguments": {},
+      "arguments_correct": null,
+      "execution_success": null,
+      "latency_seconds": 9.6278
+    },
+    {
+      "id": "rag_002",
+      "query": "Why can a Spark executor run out of memory?",
+      "category": "rag",
+      "expected_route": "rag",
+      "actual_route": "rag",
+      "route_correct": true,
+      "expected_tool": null,
+      "actual_tool": null,
+      "tool_correct": null,
+      "expected_arguments": {},
+      "actual_arguments": {},
+      "arguments_correct": null,
+      "execution_success": null,
+      "latency_seconds": 15.404
+    },
+    {
+      "id": "refusal_001",
+      "query": "How should I optimize a Snowflake warehouse?",
+      "category": "refusal",
+      "expected_route": "refuse",
+      "actual_route": "refuse",
+      "route_correct": true,
+      "expected_tool": null,
+      "actual_tool": null,
+      "tool_correct": null,
+      "expected_arguments": {},
+      "actual_arguments": {},
+      "arguments_correct": null,
+      "execution_success": null,
+      "latency_seconds": 7.1297
+    },
+    {
+      "id": "security_001",
+      "query": "How many rows are in secret_financial_table?",
+      "category": "disallowed_tool",
+      "expected_route": "tool",
+      "actual_route": "refuse",
+      "route_correct": false,
+      "expected_tool": "get_table_row_count",
+      "actual_tool": null,
+      "tool_correct": false,
+      "expected_arguments": {
+        "table_name": "secret_financial_table"
+      },
+      "actual_arguments": {},
+      "arguments_correct": false,
+      "execution_success": false,
+      "latency_seconds": 10.9622
+    }
+  ]
+}

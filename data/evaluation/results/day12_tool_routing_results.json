@@ -1,0 +1,192 @@
+{
+  "total_cases": 10,
+  "routing_accuracy": 0.8,
+  "tool_cases": 6,
+  "tool_selection_accuracy": 0.8333,
+  "argument_accuracy": 0.8333,
+  "successful_tool_executions": 5,
+  "detailed_results": [
+    {
+      "id": "tool_001",
+      "query": "What columns are in employees?",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_schema",
+      "actual_tool": "get_table_schema",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "employees"
+      },
+      "actual_arguments": {
+        "table_name": "employees"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 17.8666
+    },
+    {
+      "id": "tool_002",
+      "query": "Show me the structure of orders.",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_schema",
+      "actual_tool": "get_table_schema",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "orders"
+      },
+      "actual_arguments": {
+        "table_name": "orders"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 7.5591
+    },
+    {
+      "id": "tool_003",
+      "query": "What data types does the customers table use?",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_schema",
+      "actual_tool": "get_table_schema",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "customers"
+      },
+      "actual_arguments": {
+        "table_name": "customers"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 7.8504
+    },
+    {
+      "id": "tool_004",
+      "query": "Can you describe the columns in the employees table?",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_schema",
+      "actual_tool": "get_table_schema",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "employees"
+      },
+      "actual_arguments": {
+        "table_name": "employees"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 7.7408
+    },
+    {
+      "id": "tool_005",
+      "query": "Give me the schema for orders.",
+      "category": "tool",
+      "expected_route": "tool",
+      "actual_route": "tool",
+      "route_correct": true,
+      "expected_tool": "get_table_schema",
+      "actual_tool": "get_table_schema",
+      "tool_correct": true,
+      "expected_arguments": {
+        "table_name": "orders"
+      },
+      "actual_arguments": {
+        "table_name": "orders"
+      },
+      "arguments_correct": true,
+      "execution_success": true,
+      "latency_seconds": 7.93
+    },
+    {
+      "id": "rag_001",
+      "query": "What is Apache Spark?",
+      "category": "rag",
+      "expected_route": "rag",
+      "actual_route": "rag",
+      "route_correct": true,
+      "expected_tool": null,
+      "actual_tool": null,
+      "tool_correct": null,
+      "expected_arguments": {},
+      "actual_arguments": {},
+      "arguments_correct": null,
+      "execution_success": null,
+      "latency_seconds": 9.8475
+    },
+    {
+      "id": "rag_002",
+      "query": "Why can a Spark executor run out of memory?",
+      "category": "rag",
+      "expected_route": "rag",
+      "actual_route": "rag",
+      "route_correct": true,
+      "expected_tool": null,
+      "actual_tool": null,
+      "tool_correct": null,
+      "expected_arguments": {},
+      "actual_arguments": {},
+      "arguments_correct": null,
+      "execution_success": null,
+      "latency_seconds": 10.4989
+    },
+    {
+      "id": "rag_003",
+      "query": "How do the Spark driver and executors work together?",
+      "category": "rag",
+      "expected_route": "rag",
+      "actual_route": "rag",
+      "route_correct": true,
+      "expected_tool": null,
+      "actual_tool": null,
+      "tool_correct": null,
+      "expected_arguments": {},
+      "actual_arguments": {},
+      "arguments_correct": null,
+      "execution_success": null,
+      "latency_seconds": 8.2787
+    },
+    {
+      "id": "unsupported_001",
+      "query": "How should I optimize a Snowflake warehouse?",
+      "category": "refusal",
+      "expected_route": "refuse",
+      "actual_route": "rag",
+      "route_correct": false,
+      "expected_tool": null,
+      "actual_tool": null,
+      "tool_correct": null,
+      "expected_arguments": {},
+      "actual_arguments": {},
+      "arguments_correct": null,
+      "execution_success": null,
+      "latency_seconds": 8.5427
+    },
+    {
+      "id": "unsupported_002",
+      "query": "Show me the schema of secret_financial_table",
+      "category": "disallowed_tool",
+      "expected_route": "tool",
+      "actual_route": "refuse",
+      "route_correct": false,
+      "expected_tool": "get_table_schema",
+      "actual_tool": null,
+      "tool_correct": false,
+      "expected_arguments": {
+        "table_name": "secret_financial_table"
+      },
+      "actual_arguments": {},
+      "arguments_correct": false,
+      "execution_success": false,
+      "latency_seconds": 8.2723
+    }
+  ]
+}

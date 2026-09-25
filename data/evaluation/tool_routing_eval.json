@@ -1,0 +1,84 @@
+[
+  {
+    "id": "tool_001",
+    "query": "What columns are in employees?",
+    "category": "tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "employees"
+    }
+  },
+  {
+    "id": "tool_002",
+    "query": "Show me the structure of orders.",
+    "category": "tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "orders"
+    }
+  },
+  {
+    "id": "tool_003",
+    "query": "What data types does the customers table use?",
+    "category": "tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "customers"
+    }
+  },
+  {
+    "id": "tool_004",
+    "query": "Can you describe the columns in the employees table?",
+    "category": "tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "employees"
+    }
+  },
+  {
+    "id": "tool_005",
+    "query": "Give me the schema for orders.",
+    "category": "tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "orders"
+    }
+  },
+  {
+    "id": "rag_001",
+    "query": "What is Apache Spark?",
+    "category": "rag",
+    "expected_tool": null,
+    "expected_arguments": null
+  },
+  {
+    "id": "rag_002",
+    "query": "Why can a Spark executor run out of memory?",
+    "category": "rag",
+    "expected_tool": null,
+    "expected_arguments": null
+  },
+  {
+    "id": "rag_003",
+    "query": "How do the Spark driver and executors work together?",
+    "category": "rag",
+    "expected_tool": null,
+    "expected_arguments": null
+  },
+  {
+    "id": "unsupported_001",
+    "query": "How should I optimize a Snowflake warehouse?",
+    "category": "refusal",
+    "expected_tool": null,
+    "expected_arguments": null
+  },
+  {
+    "id": "unsupported_002",
+    "query": "Show me the schema of secret_financial_table",
+    "category": "disallowed_tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "secret_financial_table"
+    }
+  }
+]

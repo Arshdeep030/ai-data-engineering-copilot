@@ -1,0 +1,73 @@
+[
+  {
+    "question": "What is Apache Spark?",
+    "relevant_ids": [
+      "spark_apache_spark_000"
+    ],
+    "expected_answer": "Apache Spark is a distributed computing engine for processing large datasets. A Spark application can run across multiple machines and execute tasks in parallel.",
+    "answerable": true
+  },
+  {
+    "question": "Why can a Spark executor run out of memory?",
+    "relevant_ids": [
+      "spark_executor_out_of_memory_errors_000"
+    ],
+    "expected_answer": "An executor can run out of memory when its workload requires more memory than is available. Large workloads, cached data, and memory-intensive operations can increase memory requirements.",
+    "answerable": true
+  },
+  {
+    "question": "What does a Spark executor do?",
+    "relevant_ids": [
+      "spark_spark_executors_000"
+    ],
+    "expected_answer": "Executors run tasks assigned by the driver and can store data in memory and on disk during computation.",
+    "answerable": true
+  },
+  {
+    "question": "How do the Spark driver and executors work together?",
+    "relevant_ids": [
+      "spark_spark_architecture_000",
+      "spark_spark_executors_000"
+    ],
+    "expected_answer": "The driver coordinates the application and schedules work, while executors run the assigned tasks and store data during computation.",
+    "answerable": true
+  },
+  {
+    "question": "How does Spark SQL work with structured data?",
+    "relevant_ids": [
+      "spark_spark_sql_000"
+    ],
+    "expected_answer": "Spark SQL lets users query structured data with SQL and can be used with Spark DataFrame APIs.",
+    "answerable": true
+  },
+  {
+    "question": "How do Kafka partitions distribute records across consumers?",
+    "relevant_ids": [],
+    "expected_answer": null,
+    "answerable": false
+  },
+  {
+    "question": "What ACID guarantees does Delta Lake provide?",
+    "relevant_ids": [],
+    "expected_answer": null,
+    "answerable": false
+  },
+  {
+    "question": "How do Airflow DAGs orchestrate work in Microsoft Fabric?",
+    "relevant_ids": [],
+    "expected_answer": null,
+    "answerable": false
+  },
+  {
+    "question": "How do I configure a Kubernetes cluster?",
+    "relevant_ids": [],
+    "expected_answer": null,
+    "answerable": false
+  },
+  {
+    "question": "What is the best way to optimize a Snowflake warehouse?",
+    "relevant_ids": [],
+    "expected_answer": null,
+    "answerable": false
+  }
+]

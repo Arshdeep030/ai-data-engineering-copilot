@@ -1,0 +1,34 @@
+{
+  "evaluation": {
+    "dataset": "rag_eval.json",
+    "baseline": "day8_results.json"
+  },
+  "retrieval": {
+    "recall_at_1": 0.7,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "mrr": 0.9
+  },
+  "answer_quality": {
+    "lexical_faithfulness": 1.0,
+    "semantic_faithfulness": 0.6667,
+    "answer_relevance": {
+      "embedding": 0.8704,
+      "cross_encoder": 0.9996
+    },
+    "citation_precision": 1.0,
+    "citation_recall": 1.0
+  },
+  "unsupported_questions": {
+    "total": 5,
+    "correct_refusals": 5,
+    "accuracy": 1.0
+  },
+  "performance": {
+    "total_latency_seconds": 193.5,
+    "retrieval_latency_share": "3.1%",
+    "generation_latency_share": "96.9%",
+    "input_tokens": 4570,
+    "output_tokens": 2733
+  }
+}

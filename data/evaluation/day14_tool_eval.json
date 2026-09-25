@@ -1,0 +1,106 @@
+[
+  {
+    "id": "schema_001",
+    "query": "What columns are in employees?",
+    "category": "tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "employees"
+    }
+  },
+  {
+    "id": "schema_002",
+    "query": "Show me the structure of orders.",
+    "category": "tool",
+    "expected_tool": "get_table_schema",
+    "expected_arguments": {
+      "table_name": "orders"
+    }
+  },
+  {
+    "id": "count_001",
+    "query": "How many orders are there?",
+    "category": "tool",
+    "expected_tool": "get_table_row_count",
+    "expected_arguments": {
+      "table_name": "orders"
+    }
+  },
+  {
+    "id": "count_002",
+    "query": "What is the row count of employees?",
+    "category": "tool",
+    "expected_tool": "get_table_row_count",
+    "expected_arguments": {
+      "table_name": "employees"
+    }
+  },
+  {
+    "id": "count_003",
+    "query": "How many customers exist in the database?",
+    "category": "tool",
+    "expected_tool": "get_table_row_count",
+    "expected_arguments": {
+      "table_name": "customers"
+    }
+  },
+  {
+    "id": "sample_001",
+    "query": "Show me 3 customers.",
+    "category": "tool",
+    "expected_tool": "get_table_sample",
+    "expected_arguments": {
+      "table_name": "customers",
+      "limit": 3
+    }
+  },
+  {
+    "id": "sample_002",
+    "query": "Give me 2 sample records from employees.",
+    "category": "tool",
+    "expected_tool": "get_table_sample",
+    "expected_arguments": {
+      "table_name": "employees",
+      "limit": 2
+    }
+  },
+  {
+    "id": "sample_003",
+    "query": "Show me sample rows from orders.",
+    "category": "tool",
+    "expected_tool": "get_table_sample",
+    "expected_arguments": {
+      "table_name": "orders"
+    }
+  },
+  {
+    "id": "rag_001",
+    "query": "What is Apache Spark?",
+    "category": "rag",
+    "expected_tool": null,
+    "expected_arguments": null
+  },
+  {
+    "id": "rag_002",
+    "query": "Why can a Spark executor run out of memory?",
+    "category": "rag",
+    "expected_tool": null,
+    "expected_arguments": null
+  },
+  {
+    "id": "refusal_001",
+    "query": "How should I optimize a Snowflake warehouse?",
+    "category": "refusal",
+    "expected_tool": null,
+    "expected_arguments": null
+  },
+  {
+    "id": "security_001",
+    "query": "How many rows are in secret_financial_table?",
+    "category": "disallowed_tool",
+    "expected_tool": "get_table_row_count",
+    "expected_arguments": {
+      "table_name": "secret_financial_table"
+    }
+  }
+]
