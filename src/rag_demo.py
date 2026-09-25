@@ -1,4 +1,7 @@
-from ollama import chat
+try:
+    from llm_client import ask_llm
+except ImportError:
+    from .llm_client import ask_llm
 
 from hybrid_retriever import hybrid_search
 from reranker import rerank
@@ -55,21 +58,9 @@ Question:
 {query}
 """
 
-    response = chat(
-        model=LLM_MODEL,
-        messages=[
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
-    )
+    answer, _ = ask_llm(question=user_prompt, system_prompt=system_prompt)
+    return answer
 
-    return response["message"]["content"]
 
 
 def main():
